@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Group: Contact Managers -->
+    <record id="group_contact_manager" model="res.groups">
+        <field name="name">Contact Managers</field>
+        <field name="category_id" ref="base.module_category_contacts"/>
+        <field name="implied_ids" eval="[(4, ref('contact_extend.group_contact_user'))]"/>
+    </record>
+
+    <!-- Group: Contact Users -->
+    <record id="group_contact_user" model="res.groups">
+        <field name="name">Contact Users</field>
+        <field name="category_id" ref="base.module_category_contacts"/>
+    </record>
+</odoo>

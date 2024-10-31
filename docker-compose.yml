@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  web1:
+    image: odoo:16
+    depends_on:
+      - db1
+    ports:
+      - "8009:8069"
+    volumes:
+      - ./config:/etc/odoo
+      - ./custom:/mnt/extra-addons
+      - ./odoo-demeter/odoo:/opt/odoo
+    restart: always
+
+  db1:
+    image: postgres:14
+    ports:
+      - "5440:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=myodoo
+    volumes:
+      - ./postgresql:/var/lib/postgresql/14/main
+    restart: always
